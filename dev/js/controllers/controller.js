@@ -145,6 +145,12 @@ OlaTourerController.controller('DestController', function($scope, $timeout, $mdT
   $scope.$on('$ionicView.enter', function(){
     $scope.scaleOut = false;
     $scope.selectedPlaces = JSON.parse(LocalStorageService.get('savedTrips'));
+    if($scope.selectedPlaces.length == 0){
+      $scope.noTrips = true;
+    }
+    else{
+      $scope.noTrips = false;
+    }
   })
 
   $scope.itiDetails = function(place){
@@ -200,12 +206,17 @@ OlaTourerController.controller('PlacesController',
   };
 
   $scope.place = SessionStorageService.get("place");
+  $scope.selectTab = 0;
 
   $scope.getToastPosition = function() {
     return Object.keys($scope.toastPosition)
       .filter(function(pos) { return $scope.toastPosition[pos]; })
       .join(' ');
   };
+
+  $scope.changeTabs = function(tabNum){
+    $scope.selectTab = tabNum;
+  }
 
   $scope.moreDataCanBeLoaded = true;
 

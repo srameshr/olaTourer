@@ -22,9 +22,9 @@ position: inherit !important;
   </div>
   </div>
   </md-toolbar>
-	<md-tabs data-tap-disabled="true"  flex class="md-primary md-whiteframe-z1">
+	<md-tabs md-selected="selectTab"  flex class="md-primary md-whiteframe-z1" data-tap-disabled="true">
   	<md-tab label="City">
-  	<ion-content style="margin-top:95px" overflow-scroll="true" on-swipe-right="">  
+  	<ion-content style="margin-top:95px" overflow-scroll="true" on-swipe-left="changeTabs(1)">  
   	
   	 <!-- <md-checkbox  data-tap-disabled="true" ng-repeat="place in cityPlacesList" ng-model="data.cb1" aria-label="{{place.name}}">
    	{{place.name}}
@@ -58,7 +58,7 @@ position: inherit !important;
   	</ion-content>
   	</md-tab>
   <md-tab label="Shopping">
-  <ion-content style="margin-top:95px" overflow-scroll="true">
+  <ion-content style="margin-top:95px" overflow-scroll="true" on-swipe-left="changeTabs(2)" on-swipe-right="changeTabs(0)">
   	 <!-- <md-checkbox  data-tap-disabled="true" ng-repeat="place in cityPlacesList" ng-model="data.cb1" aria-label="{{place.name}}">
    	{{place.name}}
    	<h2>alskdfjlaskfdjlsadfjsdf</h2>
@@ -88,7 +88,7 @@ position: inherit !important;
   	</md-tab>
 
   <md-tab label="Eats">
-  <ion-content style="margin-top:95px" overflow-scroll="true">
+  <ion-content style="margin-top:95px" overflow-scroll="true" on-swipe-left="changeTabs(3)" on-swipe-right="changeTabs(1)">
   	<md-list>
       <md-item ng-repeat="place in foodList">
         <md-item-content>
@@ -113,7 +113,7 @@ position: inherit !important;
    </ion-content>
   </md-tab>
   <md-tab label="NightLife">
-  <ion-content style="margin-top:95px" overflow-scroll="true">
+  <ion-content style="margin-top:95px" overflow-scroll="true" on-swipe-left="changeTabs(4)" on-swipe-right="changeTabs(2)">
   	<md-list>
       <md-item ng-repeat="place in nightLifeList">
         <md-item-content>
@@ -137,7 +137,7 @@ position: inherit !important;
     </ion-content>
   </md-tab>
   <md-tab label="Relax" md-on-select="plcToRelax('beauty_salon|gym|hair_care|movie_theater|spa');">
-  <ion-content style="margin-top:95px" overflow-scroll="true">
+  <ion-content style="margin-top:95px" overflow-scroll="true" on-swipe-left="changeTabs(5)" on-swipe-right="changeTabs(3)">
   	<md-list>
       <md-item ng-repeat="place in relaxList">
         <md-item-content>
@@ -161,7 +161,7 @@ position: inherit !important;
     </ion-content>
   </md-tab>
   <md-tab label="EME" md-on-select="emePlc('hospital|police|fire_station');">
-  <ion-content style="margin-top:95px" overflow-scroll="true">
+  <ion-content style="margin-top:95px" overflow-scroll="true" on-swipe-right="changeTabs(4)">
   <md-list>
       <md-item ng-repeat="place in emeList">
         <md-item-content>

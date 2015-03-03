@@ -541,3 +541,20 @@ md-bottom-sheet.md-grid md-item p.md-grid-text {
     -o-transform:  translate(0px,0px)  ;
   }
 }
+
+.no-trips i{
+  display: flex;
+justify-content: center;
+font-size: 37px;
+margin-top: 25px;
+color: #B8B8B8;
+}
+
+.no-trips p{
+  font-family: circularBold;
+font-size: 16px;
+display: flex;
+justify-content: center;
+color: #969696;
+margin-bottom: 16px;
+}
