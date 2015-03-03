@@ -1,0 +1,194 @@
+<ion-view>
+<style>
+.md-tabs-content {
+width: 100%;
+position: inherit !important;
+}
+</style>
+<md-toolbar class="no-shadow">
+      <div layout="row" layout-wrap>
+  <div flex="15">
+     <md-button class="header-btn" data-tap-disabled="true" ng-click="goBack()">
+          <i class="icon ion-android-arrow-back"></i>
+        </md-button>
+  </div>
+  <div flex="70">
+    <h3 class="md-toolbar-tools">{{place}}</h3>
+  </div>
+  <div flex="15">
+    <md-button class="header-btn left-hdr-btn" data-tap-disabled="true" ng-click="showShareSheet($event)">
+          <i class="icon ion-android-share-alt"></i>
+        </md-button>
+  </div>
+  </div>
+  </md-toolbar>
+	<md-tabs data-tap-disabled="true"  flex class="md-primary md-whiteframe-z1">
+  	<md-tab label="City">
+  	<ion-content style="margin-top:95px" overflow-scroll="true" on-swipe-right="">  
+  	
+  	 <!-- <md-checkbox  data-tap-disabled="true" ng-repeat="place in cityPlacesList" ng-model="data.cb1" aria-label="{{place.name}}">
+   	{{place.name}}
+   	<h2>alskdfjlaskfdjlsadfjsdf</h2>
+   </md-checkbox>  -->
+   <md-list>
+      <md-item ng-repeat="place in cityPlacesList">
+        <md-item-content>
+         <md-checkbox class="list-chkbox" data-tap-disabled="true" ng-model="place.checked" aria-label="{{place.name}}">
+          <div class="md-tile-content places-list-content">
+            <h3 class="places-list-name">{{place.name}}</h3>
+            <div layout="row" layout-align="space-between center">
+  						<div flex="70">
+    						<h4 class="places-list-details">{{place.vicinity}}</h4>
+  						</div>
+  					<div flex="20">
+    					<h4 class="places-list-details">{{place.opening_hours.open_now ? 'Open' : 'Closed'}}</h4>
+  					</div>
+          </div>
+          </div>
+          </md-checkbox>
+        </md-item-content>
+      </md-item>
+    </md-list>
+     
+     <ion-infinite-scroll
+    on-infinite="loadMore('amusement_park|park|aquarium|art_gallery|bowling_alley|church|museum|painter|zoo|', cityPaginateData, 'city')"
+    distance="1%" icon="none">
+  </ion-infinite-scroll>
+  <md-progress-linear md-mode="indeterminate" class="md-accent"></md-progress-linear>
+  	</ion-content>
+  	</md-tab>
+  <md-tab label="Shopping">
+  <ion-content style="margin-top:95px" overflow-scroll="true">
+  	 <!-- <md-checkbox  data-tap-disabled="true" ng-repeat="place in cityPlacesList" ng-model="data.cb1" aria-label="{{place.name}}">
+   	{{place.name}}
+   	<h2>alskdfjlaskfdjlsadfjsdf</h2>
+   </md-checkbox>  -->
+   	<md-list>
+      <md-item ng-repeat="place in shoppingList">
+        <md-item-content>
+         <md-checkbox class="list-chkbox" data-tap-disabled="true" ng-model="place.checked" aria-label="{{place.name}}">
+          <div class="md-tile-content places-list-content">
+            <h3 class="places-list-name">{{place.name}}</h3>
+            <div layout="row" layout-align="space-between center">
+  						<div flex="70">
+    						<h4 class="places-list-details">{{place.vicinity}}</h4>
+  						</div>
+  					<div flex="20">
+    					<h4 class="places-list-details">{{place.opening_hours.open_now ? 'Open' : 'Closed'}}</h4>
+  					</div>
+          </div>
+          </div>
+          </md-checkbox>
+        </md-item-content>
+      </md-item>
+    </md-list>
+    
+    <md-progress-linear md-mode="indeterminate" class="md-accent"></md-progress-linear>
+  	</ion-content>
+  	</md-tab>
+
+  <md-tab label="Eats">
+  <ion-content style="margin-top:95px" overflow-scroll="true">
+  	<md-list>
+      <md-item ng-repeat="place in foodList">
+        <md-item-content>
+         <md-checkbox class="list-chkbox" data-tap-disabled="true" ng-model="place.checked" aria-label="{{place.name}}">
+          <div class="md-tile-content places-list-content">
+            <h3 class="places-list-name">{{place.name}}</h3>
+            <div layout="row" layout-align="space-between center">
+  						<div flex="70">
+    						<h4 class="places-list-details">{{place.vicinity}}</h4>
+  						</div>
+  					<div flex="20">
+    					<h4 class="places-list-details">{{place.opening_hours.open_now ? 'Open' : 'Closed'}}</h4>
+  					</div>
+          </div>
+          </div>
+          </md-checkbox>
+        </md-item-content>
+      </md-item>
+    </md-list>
+
+    <md-progress-linear md-mode="indeterminate" class="md-accent"></md-progress-linear>
+   </ion-content>
+  </md-tab>
+  <md-tab label="NightLife">
+  <ion-content style="margin-top:95px" overflow-scroll="true">
+  	<md-list>
+      <md-item ng-repeat="place in nightLifeList">
+        <md-item-content>
+         <md-checkbox class="list-chkbox" data-tap-disabled="true" ng-model="place.checked" aria-label="{{place.name}}">
+          <div class="md-tile-content places-list-content">
+            <h3 class="places-list-name">{{place.name}}</h3>
+            <div layout="row" layout-align="space-between center">
+  						<div flex="70">
+    						<h4 class="places-list-details">{{place.vicinity}}</h4>
+  						</div>
+  					<div flex="20">
+    					<h4 class="places-list-details">{{place.opening_hours.open_now ? 'Open' : 'Closed'}}</h4>
+  					</div>
+          </div>
+          </div>
+          </md-checkbox>
+        </md-item-content>
+      </md-item>
+    </md-list>
+    <md-progress-linear md-mode="indeterminate" class="md-accent"></md-progress-linear>
+    </ion-content>
+  </md-tab>
+  <md-tab label="Relax" md-on-select="plcToRelax('beauty_salon|gym|hair_care|movie_theater|spa');">
+  <ion-content style="margin-top:95px" overflow-scroll="true">
+  	<md-list>
+      <md-item ng-repeat="place in relaxList">
+        <md-item-content>
+         <md-checkbox class="list-chkbox" data-tap-disabled="true" ng-model="place.checked" aria-label="{{place.name}}">
+          <div class="md-tile-content places-list-content">
+            <h3 class="places-list-name">{{place.name}}</h3>
+            <div layout="row" layout-align="space-between center">
+  						<div flex="70">
+    						<h4 class="places-list-details">{{place.vicinity}}</h4>
+  						</div>
+  					<div flex="20">
+    					<h4 class="places-list-details">{{place.opening_hours.open_now ? 'Open' : 'Closed'}}</h4>
+  					</div>
+          </div>
+          </div>
+          </md-checkbox>
+        </md-item-content>
+      </md-item>
+    </md-list>
+    <md-progress-linear md-mode="indeterminate" class="md-accent"></md-progress-linear>
+    </ion-content>
+  </md-tab>
+  <md-tab label="EME" md-on-select="emePlc('hospital|police|fire_station');">
+  <ion-content style="margin-top:95px" overflow-scroll="true">
+  <md-list>
+      <md-item ng-repeat="place in emeList">
+        <md-item-content>
+         <md-checkbox class="list-chkbox" data-tap-disabled="true" ng-model="place.checked" aria-label="{{place.name}}">
+          <div class="md-tile-content places-list-content">
+            <h3 class="places-list-name">{{place.name}}</h3>
+            <div layout="row" layout-align="space-between center">
+  						<div flex="70">
+    						<h4 class="places-list-details">{{place.vicinity}}</h4>
+  						</div>
+  					<div flex="20">
+    					<h4 class="places-list-details">{{place.opening_hours.open_now ? 'Open' : 'Closed'}}</h4>
+  					</div>
+          </div>
+          </div>
+          </md-checkbox>
+        </md-item-content>
+      </md-item>
+    </md-list>
+    <md-progress-linear md-mode="indeterminate" class="md-accent"></md-progress-linear>
+    </ion-content>
+  </md-tab>
+</md-tabs>
+<div>
+</div>
+<div>
+ <md-button data-tap-disabled="true" class="md-fab md-accent floating-btn scale-side-buttons" aria-label="Ride" ng-click="submitCheckedItems()">
+    <i class="icon ion-android-car fab-btn-icon"></i>
+  </md-button>
+</ion-view>

@@ -1,0 +1,80 @@
+ <style>
+  #map-canvas {
+      height:300px;
+  }
+</style>
+<ion-view>
+  <md-toolbar class="md-whiteframe-z1">
+      <div layout="row" layout-wrap>
+  <div flex="15">
+     <md-button aria-label="back" class="header-btn" data-tap-disabled="true" ng-click="goBack()">
+          <i class="icon ion-android-arrow-back"></i>
+        </md-button>
+  </div>
+  <div flex="70">
+    <h3 class="md-toolbar-tools">Your Itinerary</h3>
+  </div>
+  </div>
+  </md-toolbar>
+  <ion-content class="has-header padding-bottom">    
+      <md-card class="no-padding maps-card" >
+        <div id="map-canvas"></div>
+      </md-card>
+      <md-subheader class="md-accent"><i class="icon ion-android-map sub-header-btn"></i><span class="sub-header-txt">Trip Details</span></md-subheader>
+      <md-item-content>
+       <div class="md-tile-content places-list-content">
+       		<i class="icon ion-android-pin sub-item-icon"></i>
+            <h3 class="places-list-name">{{distance + 'KM'}}</h3>
+            <div layout="row" layout-align="space-between center">
+  				<div flex="70">
+    				<h4 class="places-list-details">Total travel distance</h4>
+  				</div>
+          </div>    
+         </div>
+       </md-item-content>
+        <md-item-content>
+       <div class="md-tile-content places-list-content">
+       		<i class="icon ion-android-time sub-item-icon"></i>
+            <h3 class="places-list-name">{{traveltime + 'Mins'}}</h3>
+            <div layout="row" layout-align="space-between center">
+  				<div flex="70">
+    				<h4 class="places-list-details">Total time duration</h4>
+  				</div>
+          </div>    
+         </div>
+       </md-item-content>
+        <md-subheader class="md-accent"><i class="icon ion-android-favorite sub-header-btn"></i><span class="sub-header-txt">Your Places</span></md-subheader>
+        <md-item-content ng-repeat="place in selectedPlaces">
+       <div class="md-tile-content places-list-content">
+          <i class="icon ion-android-pin sub-item-icon"></i>
+            <h3 class="places-list-name no-overflow">{{place.name}}</h3>
+            <div layout="row" layout-align="space-between center">
+          <div flex="100">
+            <h4 class="places-list-details">{{place.area}}</h4>
+          </div>
+          </div>    
+         </div>
+       </md-item-content>
+       <md-subheader class="md-accent" ng-show="!hasTripName"><i class="icon ion-android-upload sub-header-btn"></i><span class="sub-header-txt">Save Your Trip</span></md-subheader>
+        <md-item-content style="margin-left: 15px;margin-top: -25px;" ng-if="!hasTripName">
+          <div class="md-tile-left" style="margin-top:-4em">
+              <i class="icon ion-android-create sub-item-icon"></i>
+          </div>
+          <div class="md-tile-content">
+            <md-input-container>
+      <label>Name</label>
+      <input ng-model="trip.name" placeholder="This Trips Title">
+    </md-input-container>
+    <md-button class="md-raised save-btn md-primary" style="margin-right: -1em;margin-top: 0.5em;" ng-click="save(trip.name)" data-tap-disabled="true">SAVE</md-button>
+          </div>
+     
+        </md-item-content>
+
+         <md-subheader class="md-accent" ng-show="hasTripName" ><i class="icon ion-android-done-all sub-header-btn"></i><span class="sub-header-txt">Your trip is saved!</span></md-subheader>
+        <div>
+        <md-button data-tap-disabled="true" ng-if="showAnim" style="float: right;margin: -38px 16px 38px 0" class="md-fab md-accent" ng-class="{resultRedBuzAnim:showAnim}" aria-label="Go" ui-sref="home">
+        <i class="icon ion-android-arrow-forward fab-btn-icon"></i>
+      </md-button>   
+      </div>
+  </ion-content>
+</ion-view>

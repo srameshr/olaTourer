@@ -1,0 +1,37 @@
+<ion-view>
+<md-toolbar class="md-whiteframe-z1">
+      <div layout="row" layout-wrap>
+  <div flex>
+    <h3 class="md-toolbar-tools">Pick Your Destination</h3>
+  </div>
+ 
+  </div>
+  </md-toolbar>
+  <ion-content class="header-bar-padding" >
+    <div class="homeSplash">
+    </div>
+    <form novalidate name="dest">
+    <ion-google-place placeholder="Enter Your Destination" ng-model="dest.place" required>
+    </ion-google-place>
+    <div class="flex-container-go-btn" ng-class="{scaleSideButtonsOut:scaleOut}">
+      <md-button data-tap-disabled="true" class="md-fab md-accent resultRedBuzAnim" aria-label="Go" ng-click="submitData(dest, dest.$valid)">
+        <i class="icon ion-android-arrow-forward fab-btn-icon"></i>
+      </md-button>    
+    </div>
+    </form>
+    <md-subheader class="md-accent"><i class="icon ion-android-map sub-header-btn"></i><span class="sub-header-txt">Your Itenaraies</span></md-subheader>
+      <md-item-content ng-repeat="place in selectedPlaces">
+       <div class="md-tile-content places-list-content" style="padding-top: 20px;padding-bottom: 20px;">
+          <i class="icon ion-android-pin sub-item-icon"></i>
+            <h3 style="width:65%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"class="places-list-name">{{place.name}}</h3>
+            <md-button class="itinerary-details-icon md-whiteframe-z1" data-tap-disabled="true" aria-label="iti"
+             ng-click="itiDetails(place)"><i class="icon ion-android-done"></i></md-button>
+            <div layout="row" layout-align="space-between center">
+          <div flex>
+            <h4 class="places-list-details">{{place.main}}</h4>
+          </div>
+          </div>    
+         </div>
+       </md-item-content>
+  </ion-content>
+</ion-view>

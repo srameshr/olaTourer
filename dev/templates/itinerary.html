@@ -1,0 +1,43 @@
+<ion-view>
+  <md-toolbar class="md-whiteframe-z1">
+      <div layout="row" layout-wrap>
+  <div flex="15">
+     <md-button aria-label="back" class="header-btn" data-tap-disabled="true" ng-click="goBack()">
+          <i class="icon ion-android-arrow-back"></i>
+        </md-button>
+  </div>
+  <div flex="70">
+    <h3 class="md-toolbar-tools">{{itiDet.name}}</h3>
+  </div>
+  <div flex="15">
+    <md-button class="header-btn left-hdr-btn" data-tap-disabled="true" ng-click="showShareSheet($event)">
+          <i class="icon ion-android-share-alt"></i>
+        </md-button>
+  </div>
+  </div>
+  </md-toolbar>
+  
+  <ion-content class="has-header">
+    <md-subheader class="md-accent"><i class="icon ion-android-map sub-header-btn"></i><span class="sub-header-txt">City</span></md-subheader>
+      <md-item-content>
+       <div class="md-tile-content places-list-content">
+          <i class="icon ion-android-pin sub-item-icon"></i>
+            <h3 class="places-list-name">{{itiDet.main}}</h3>
+            <div layout="row" layout-align="space-between center">
+          </div>    
+         </div>
+       </md-item-content>
+       <md-subheader class="md-accent"><i class="icon ion-android-favorite sub-header-btn"></i><span class="sub-header-txt">Your Places</span></md-subheader>
+        <md-item-content ng-repeat="place in itiDet.plc">
+       <div class="md-tile-content places-list-content">
+          <i class="icon ion-android-pin sub-item-icon"></i>
+            <h3 class="places-list-name no-overflow">{{place.name}}</h3>
+            <div layout="row" layout-align="space-between center">
+          <div flex="100">
+            <h4 class="places-list-details">{{place.area}}</h4>
+          </div>
+          </div>    
+         </div>
+       </md-item-content>
+  </ion-content>
+  </ion-view>
